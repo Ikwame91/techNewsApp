@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tech_news_app/backend/functions.dart';
+import 'package:tech_news_app/componenets/appbar.dart';
 import 'package:tech_news_app/componenets/search_bar.dart';
 import 'package:tech_news_app/utils/colors.dart';
 
@@ -24,14 +25,14 @@ class _HomeState extends State<Home> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: AppColors.black,
-      appBar: AppBar(
-        backgroundColor: AppColors.black,
-        elevation: 0,
-        title: const Text('Tech News'),
-        centerTitle: true,
-      ),
+      appBar: Apbar(),
       body: Column(
-        children: [SearchBarr(), Expanded(child: Container())],
+        children: [
+          SearchBarr(),
+          Container(
+            width: size.width,
+          ),
+        ],
       ),
     );
   }

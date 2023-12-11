@@ -20,6 +20,8 @@ class _SearchBarState extends State<SearchBarr> {
         Expanded(
           child: Container(
             height: 50,
+            margin: const EdgeInsets.all(10),
+            padding: const EdgeInsets.only(left: 20),
             decoration: BoxDecoration(
               color: AppColors.darkgrey,
               borderRadius: BorderRadius.circular(50),
@@ -30,7 +32,7 @@ class _SearchBarState extends State<SearchBarr> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const SizedBox(
-                    height: 15,
+                    height: 5,
                   ),
                   Expanded(
                     child: TextField(
@@ -58,10 +60,14 @@ class _SearchBarState extends State<SearchBarr> {
             ),
           ),
         ),
-        InkWell(
-          onTap: () {
-            FocusScope.of(context).unfocus();
-          },
+        Container(
+          width: 50,
+          height: 50,
+          child: InkWell(
+            onTap: () {
+              FocusScope.of(context).unfocus();
+            },
+          ),
         )
       ],
     );
