@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tech_news_app/backend/functions.dart';
+import 'package:tech_news_app/backend/model.dart';
 import 'package:tech_news_app/componenets/appbar.dart';
 import 'package:tech_news_app/componenets/newsbox.dart';
 import 'package:tech_news_app/componenets/search_bar.dart';
@@ -14,12 +15,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late Future<List> newsList;
+  late Future<List<TrendingNews>> newsList;
 
   @override
   void initState() {
     super.initState();
-    newsList = fetchNews();
+    newsList = NewsApi().fetchNews();
   }
 
   @override

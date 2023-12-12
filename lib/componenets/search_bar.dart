@@ -65,7 +65,7 @@ class _SearchBarState extends State<SearchBarr> {
           child: InkWell(
             onTap: () {
               FocusScope.of(context).unfocus();
-              fetchNews();
+              NewsApi().fetchNews();
             },
             child: Container(
               height: 45,
