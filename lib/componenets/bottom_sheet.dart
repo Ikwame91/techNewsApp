@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,7 +33,9 @@ _launchURL(Uri url) async {
       throw 'Could not launch $url';
     }
   } catch (e) {
-    print('Error launching URL: $e');
+    if (kDebugMode) {
+      print('Error launching URL: $e');
+    }
   }
 }
 
