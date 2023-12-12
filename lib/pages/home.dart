@@ -5,7 +5,6 @@ import 'package:tech_news_app/componenets/appbar.dart';
 import 'package:tech_news_app/componenets/newsbox.dart';
 import 'package:tech_news_app/componenets/search_bar.dart';
 import 'package:tech_news_app/utils/colors.dart';
-import 'package:tech_news_app/utils/constants.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -35,26 +34,13 @@ class _HomeState extends State<Home> {
             children: [
               const SearchBarr(),
               SizedBox(
-                height: size.height * 0.8,
+                height: size.height,
                 width: size.width,
                 child: FutureBuilder(
-                    future: fetchNews(),
+                    future: newsList,
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
-                        return ListView.builder(
-                          itemCount: snapshot.data!.length,
-                          itemBuilder: (context, index) {
-                            return NewsBox(
-                                imageurl: snapshot.data![index]['urlToImage'] ??
-                                    Constants.imageurl,
-                                title: snapshot.data![index]['title'],
-                                time: snapshot.data![index]['publishedAt'],
-                                description: snapshot.data![index]
-                                        ['description']
-                                    .toString(),
-                                url: snapshot.data![index]['url']);
-                          },
-                        );
+                        return NewsBox(snapshot: snapshot);
                       } else if (snapshot.hasError) {
                         return Text("${snapshot.error}");
                       } else {
