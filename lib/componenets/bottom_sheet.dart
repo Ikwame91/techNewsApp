@@ -24,12 +24,15 @@ void showMyBottomSheet(
       });
 }
 
-_launchURL(String url) async {
-  var uri = Uri.parse(url);
-  if (await canLaunchUrl(uri)) {
-    await launchUrl(uri);
-  } else {
-    throw 'Could not launch $url';
+_launchURL(Uri url) async {
+  try {
+    if (await canLaunch(url.toString())) {
+      await launch(url.toString());
+    } else {
+      throw 'Could not launch $url';
+    }
+  } catch (e) {
+    print('Error launching URL: $e');
   }
 }
 
@@ -67,7 +70,7 @@ class MyBottomSheetLayout extends StatelessWidget {
                       text: 'Read Full Article',
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          _launchURL(url);
+                          _launchURL(Uri.parse(url));
                         },
                       style: GoogleFonts.lato(
                         color: Colors.blue.shade400,
