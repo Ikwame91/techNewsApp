@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:tech_news_app/componenets/divider.dart';
 import 'package:tech_news_app/utils/colors.dart';
 import 'package:tech_news_app/utils/text.dart';
 
@@ -61,7 +62,8 @@ class NewsBox extends StatelessWidget {
               ],
             ),
           ),
-        )
+        ),
+        const DividerWidget()
       ],
     );
   }
