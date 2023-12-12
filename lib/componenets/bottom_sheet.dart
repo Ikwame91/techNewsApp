@@ -9,7 +9,7 @@ void showMyBottomSheet(
     BuildContext context, String title, String description, imageurl, url) {
   showBottomSheet(
       backgroundColor: Colors.black,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20), topRight: Radius.circular(20))),
       elevation: 20,
@@ -20,20 +20,19 @@ void showMyBottomSheet(
           imageurl: imageurl,
           title: title,
           description: description,
-        ); // returns your BottomSheet widget
+        );
       });
 }
 
 _launchURL(String url) async {
-  if (await canLaunch(url)) {
-    await launch(url);
+  var uri = Uri.parse(url);
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(uri);
   } else {
     throw 'Could not launch $url';
   }
 }
 
-//your bottom sheet widget class
-//you can put your things here, like buttons, callbacks and layout
 class MyBottomSheetLayout extends StatelessWidget {
   final String title, description, imageurl, url;
 
@@ -47,7 +46,7 @@ class MyBottomSheetLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20), topRight: Radius.circular(20))),
       child: Column(
@@ -56,11 +55,11 @@ class MyBottomSheetLayout extends StatelessWidget {
         children: <Widget>[
           BottomSheetImage(imageurl: imageurl, title: title),
           Container(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: ModifiedText(
                   text: description, fontSize: 16, color: Colors.white)),
           Container(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: RichText(
               text: TextSpan(
                 children: <TextSpan>[
