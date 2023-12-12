@@ -44,7 +44,7 @@ class _HomeState extends State<Home> {
                         return NewsBox(
                             imageurl: snapshot.data![index]['urlToImage'] ??
                                 Constants.imageurl,
-                            title: snapshot.data![index]['title'].toString(),
+                            title: snapshot.data![index]['title'],
                             time: snapshot.data![index]['publishedAt'],
                             description:
                                 snapshot.data![index]['description'].toString(),
