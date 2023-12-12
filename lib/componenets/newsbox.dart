@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:tech_news_app/backend/model.dart';
 import 'package:tech_news_app/componenets/bottom_sheet.dart';
 import 'package:tech_news_app/componenets/divider.dart';
@@ -64,7 +65,7 @@ class NewsItem extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(10),
           margin: const EdgeInsets.only(left: 5, right: 5, top: 5),
-          color: AppColors.black,
+          color: AppColors.primaryColor,
           child: Row(
             children: [
               CachedNetworkImage(
@@ -100,7 +101,9 @@ class NewsItem extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     ModifiedText(
-                      text: news.publishedAt.toString(),
+                      // text: news.publishedAt.toString(),
+                      text:
+                          DateFormat.yMMMMd().add_jm().format(news.publishedAt),
                       color: AppColors.lightWhite,
                       fontSize: 18,
                     ),
