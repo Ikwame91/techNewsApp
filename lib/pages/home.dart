@@ -24,7 +24,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    // Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: AppColors.black,
       appBar: const Apbar(),
@@ -37,7 +37,7 @@ class _HomeState extends State<Home> {
                   future: newsList,
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
-                      return NewsBox(snapshot: snapshot);
+                      return SizedBox(child: NewsBox(snapshot: snapshot));
                     } else if (snapshot.hasError) {
                       return Text("${snapshot.error}");
                     } else {

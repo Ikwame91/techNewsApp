@@ -29,7 +29,6 @@ class NewsBox extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
-            // Ensure that there is at least one item in the list
             if (newsList.isNotEmpty) {
               showMyBottomSheet(
                 context,
@@ -40,23 +39,23 @@ class NewsBox extends StatelessWidget {
               );
             }
           },
-          child: Container(
-            padding: const EdgeInsets.all(20),
-            margin: const EdgeInsets.only(left: 5, right: 5, top: 5),
+          child: SizedBox(
+            height: size.height,
             width: size.width,
-            color: AppColors.black,
-            child: SizedBox(
-              height: size.height,
-              child: ListView.builder(
-                itemCount: newsList.length,
-                itemBuilder: (context, index) {
-                  return Row(
+            child: ListView.builder(
+              itemCount: newsList.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  padding: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.only(left: 5, right: 5, top: 5),
+                  color: AppColors.black,
+                  child: Row(
                     children: [
                       CachedNetworkImage(
                         imageUrl: snapshot.data![index].urlToImage,
                         imageBuilder: (context, imageProvider) => Container(
-                          width: 50,
-                          height: 50,
+                          width: 65,
+                          height: 65,
                           decoration: BoxDecoration(
                               image: DecorationImage(
                                   image: imageProvider, fit: BoxFit.cover),
@@ -70,7 +69,7 @@ class NewsBox extends StatelessWidget {
                             const Icon(Icons.error),
                       ),
                       const SizedBox(
-                        width: 8,
+                        width: 12,
                       ),
                       Expanded(
                         child: Column(
@@ -82,23 +81,25 @@ class NewsBox extends StatelessWidget {
                               color: AppColors.white,
                               fontSize: 18,
                             ),
-                            const SizedBox(height: 5),
+                            const SizedBox(height: 8),
                             ModifiedText(
                               text: newsList[index].publishedAt.toString(),
                               color: AppColors.lightWhite,
                               fontSize: 18,
                             ),
+                            const SizedBox(height: 15),
+                            const DividerWidget(),
                           ],
                         ),
                       ),
+                      const DividerWidget(),
                     ],
-                  );
-                },
-              ),
+                  ),
+                );
+              },
             ),
           ),
         ),
-        const DividerWidget(),
       ],
     );
   }
