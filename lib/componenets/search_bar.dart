@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tech_news_app/backend/functions.dart';
 import 'package:tech_news_app/utils/colors.dart';
 
 class SearchBarr extends StatefulWidget {
@@ -64,6 +65,7 @@ class _SearchBarState extends State<SearchBarr> {
           child: InkWell(
             onTap: () {
               FocusScope.of(context).unfocus();
+              fetchNews();
             },
             child: Container(
               height: 45,

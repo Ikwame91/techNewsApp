@@ -29,8 +29,8 @@ class NewsBox extends StatelessWidget {
                 CachedNetworkImage(
                   imageUrl: imageurl,
                   imageBuilder: (context, imageProvider) => Container(
-                    width: 60,
-                    height: 60,
+                    width: 65,
+                    height: 65,
                     decoration: BoxDecoration(
                         image: DecorationImage(
                             image: imageProvider, fit: BoxFit.cover),
@@ -44,7 +44,7 @@ class NewsBox extends StatelessWidget {
                 const SizedBox(
                   width: 8,
                 ),
-                Flexible(
+                Expanded(
                     child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
