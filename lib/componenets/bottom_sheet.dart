@@ -26,14 +26,19 @@ void showMyBottomSheet(
 
 _launchURL(Uri url) async {
   try {
-    if (await canLaunch(url.toString())) {
-      await launch(url.toString());
+    if (!await canLaunchUrl(url)) {
+      await launchUrl(url);
     } else {
       throw 'Could not launch $url';
     }
   } catch (e) {
     print('Error launching URL: $e');
   }
+}
+
+_launchTestURL() {
+  const testURL = "https://www.google.com";
+  _launchURL(Uri.parse(testURL));
 }
 
 class MyBottomSheetLayout extends StatelessWidget {
