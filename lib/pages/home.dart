@@ -33,21 +33,17 @@ class _HomeState extends State<Home> {
           Column(
             children: [
               const SearchBarr(),
-              SizedBox(
-                height: size.height,
-                width: size.width,
-                child: FutureBuilder(
-                    future: newsList,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        return NewsBox(snapshot: snapshot);
-                      } else if (snapshot.hasError) {
-                        return Text("${snapshot.error}");
-                      } else {
-                        return const Center(child: CircularProgressIndicator());
-                      }
-                    }),
-              ),
+              FutureBuilder(
+                  future: newsList,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return NewsBox(snapshot: snapshot);
+                    } else if (snapshot.hasError) {
+                      return Text("${snapshot.error}");
+                    } else {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                  }),
             ],
           ),
         ],

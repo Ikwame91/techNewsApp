@@ -1,5 +1,7 @@
 //
 
+import 'package:tech_news_app/utils/constants.dart';
+
 class TrendingNews {
   dynamic author;
   String title;
@@ -23,10 +25,8 @@ class TrendingNews {
         author: json["author"] ?? "No author",
         title: json["title"] ?? "No title",
         description: json["description"] ?? "No description",
-        url: json["url"] ??
-            "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.123rf.com%2Fphoto_104150274_stock-vector-no-image-available-icon-vector-flat-cartoon-illustration.html&psig=AOvVaw0QZ3Z4Z6Z4Z6Z4Z6Z4Z6Z4&ust=1634177229124000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjQ4ZqH0_MCFQAAAAAdAAAAABAD",
-        urlToImage: json["urlToImage"] ??
-            "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.123rf.com%2Fphoto_104150274_stock-vector-no-image-available-icon-vector-flat-cartoon-illustration.html&psig=AOvVaw0QZ3Z4Z6Z4Z6Z4Z6Z4Z6Z4&ust=1634177229124000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJjQ4ZqH0_MCFQAAAAAdAAAAABAD",
+        url: json["url"] ?? "No url",
+        urlToImage: json["urlToImage"] ?? Constants.imageurl,
         publishedAt:
             DateTime.parse(json["publishedAt"] ?? "2021-10-13T12:00:00Z"),
         content: json["content"] ?? "No content",

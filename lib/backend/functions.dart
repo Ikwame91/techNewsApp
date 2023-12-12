@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:tech_news_app/backend/model.dart';
 import 'package:tech_news_app/componenets/search_bar.dart';
@@ -17,19 +18,21 @@ class NewsApi {
     if (response.statusCode == 200) {
       final List<dynamic> data = jsonDecode(response.body)['articles'] as List;
       final articles = data.map((dynamic item) => item as Map<String, dynamic>);
-      print(articles);
+      if (kDebugMode) {
+        print(articles);
+      }
       return articles
           .map((dynamic item) => TrendingNews.fromJson(item))
           .toList();
-      // final articles = data.map((json) => TrendingNews.fromJson(json)).toList();
-      // if (kDebugMode) {
-      //   print(articles);
-      // }
-      // return articles;
     } else {
       throw Exception('$response.statusCode');
     }
-
+    // final articles = data.map((json) => TrendingNews.fromJson(json)).toList();
+    // if (kDebugMode) {
+    //   print(articles);
+    // }
+    // return articles;
+    /////
     // Map result = jsonDecode(response.body);
     // print("fetched");
     // return result['articles'];
