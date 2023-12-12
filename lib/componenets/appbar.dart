@@ -9,15 +9,9 @@ class Apbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.search),
-        ),
-      ],
       backgroundColor: AppColors.black,
       elevation: 0,
-      title: Container(
+      title: SizedBox(
           height: 40,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,

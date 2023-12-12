@@ -42,8 +42,6 @@ class _SearchBarState extends State<SearchBarr> {
                         hintText: 'Search',
                         hintStyle: GoogleFonts.poppins(color: Colors.grey),
                         border: InputBorder.none,
-                        prefixIcon:
-                            const Icon(Icons.search, color: Colors.grey),
                         suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {
@@ -60,13 +58,25 @@ class _SearchBarState extends State<SearchBarr> {
             ),
           ),
         ),
-        Container(
+        SizedBox(
           width: 50,
           height: 50,
           child: InkWell(
             onTap: () {
               FocusScope.of(context).unfocus();
             },
+            child: Container(
+              height: 45,
+              width: 45,
+              decoration: BoxDecoration(
+                color: AppColors.primaryColor,
+                borderRadius: BorderRadius.circular(50),
+              ),
+              child: Icon(
+                Icons.search,
+                color: AppColors.lightWhite,
+              ),
+            ),
           ),
         )
       ],
