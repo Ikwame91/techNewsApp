@@ -64,8 +64,12 @@ class NewsItem extends StatelessWidget {
         onTap: onTap,
         child: Container(
           padding: const EdgeInsets.all(10),
-          margin: const EdgeInsets.only(left: 5, right: 5, top: 5),
-          color: AppColors.primaryColor,
+          margin: const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: AppColors.primaryColor,
+            border: Border.all(color: AppColors.lightWhite, width: 3),
+          ),
           child: Row(
             children: [
               CachedNetworkImage(
@@ -107,8 +111,7 @@ class NewsItem extends StatelessWidget {
                       color: AppColors.lightWhite,
                       fontSize: 18,
                     ),
-                    const SizedBox(height: 15),
-                    const DividerWidget(),
+                    const SizedBox(height: 5),
                   ],
                 ),
               ),

@@ -37,7 +37,9 @@ class _HomeState extends State<Home> {
                   future: newsList,
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
-                      return SizedBox(child: NewsBox(snapshot: snapshot));
+                      return ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: NewsBox(snapshot: snapshot));
                     } else if (snapshot.hasError) {
                       return Text("${snapshot.error}");
                     } else {

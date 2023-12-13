@@ -27,7 +27,7 @@ void showMyBottomSheet(
 
 _launchURL(Uri url) async {
   try {
-    if (!await canLaunchUrl(url)) {
+    if (await canLaunchUrl(url)) {
       await launchUrl(url);
     } else {
       throw 'Could not launch $url';
