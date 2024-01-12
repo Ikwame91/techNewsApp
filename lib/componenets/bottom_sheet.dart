@@ -39,10 +39,10 @@ _launchURL(Uri url) async {
   }
 }
 
-_launchTestURL() {
-  const testURL = "https://www.google.com";
-  _launchURL(Uri.parse(testURL));
-}
+// _launchTestURL() {
+//   const testURL = "https://www.google.com";
+//   _launchURL(Uri.parse(testURL));
+// }
 
 class MyBottomSheetLayout extends StatelessWidget {
   final String title, description, imageurl, url;
