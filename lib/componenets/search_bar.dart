@@ -68,7 +68,7 @@ class _SearchBarState extends State<SearchBarr> {
               NewsApi().fetchNews();
             },
             child: Container(
-              height: 70,
+              height: 45,
               width: 45,
               decoration: BoxDecoration(
                 color: AppColors.primaryColor,
