@@ -3,16 +3,14 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:tech_news_app/backend/model.dart';
-import 'package:tech_news_app/componenets/search_bar.dart';
 import 'package:tech_news_app/utils/key.dart' as customkey;
 
 class NewsApi {
-  static final String _techNewsUrl =
-      'https://newsapi.org/v2/top-headlines?country=us&category=technology&pageSize=100&apiKey=${customkey.Key.key}&q=${SearchBarr.searchController.text}';
-
-  Future<List<TrendingNews>> fetchNews() async {
+  Future<List<TrendingNews>> fetchNews(String query) async {
+    final String techNewsUrl =
+        'https://newsapi.org/v2/top-headlines?country=us&category=technology&pageSize=100&apiKey=${customkey.Key.key}&q=$query';
     final response = await http.get(
-      Uri.parse(_techNewsUrl),
+      Uri.parse(techNewsUrl),
     );
 
     if (response.statusCode == 200) {

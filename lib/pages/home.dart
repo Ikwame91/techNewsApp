@@ -19,7 +19,7 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    newsList = NewsApi().fetchNews();
+    newsList = NewsApi().fetchNews(SearchBarr.searchController.text);
   }
 
   @override

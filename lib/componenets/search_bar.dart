@@ -1,19 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tech_news_app/backend/functions.dart';
+import 'package:tech_news_app/backend/model.dart';
 import 'package:tech_news_app/utils/colors.dart';
 
 class SearchBarr extends StatefulWidget {
   const SearchBarr({super.key});
 
-  static TextEditingController searchController =
-      TextEditingController(text: '');
+  static TextEditingController searchController = TextEditingController();
 
   @override
   State<SearchBarr> createState() => _SearchBarState();
 }
 
 class _SearchBarState extends State<SearchBarr> {
+  List<TrendingNews> news = [];
+
+  void fetchNews() async {
+    List<TrendingNews> fetchedNews =
+        await NewsApi().fetchNews(SearchBarr.searchController.text);
+    setState(() {
+      news = fetchedNews;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -64,8 +74,8 @@ class _SearchBarState extends State<SearchBarr> {
           height: 50,
           child: InkWell(
             onTap: () {
+              fetchNews();
               FocusScope.of(context).unfocus();
-              NewsApi().fetchNews();
             },
             child: Container(
               height: 45,
